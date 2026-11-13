@@ -1,9 +1,11 @@
 /* Service worker ديال قارئ الكتب.
    كل ما بدلتي شي ملف، بدل رقم VERSION باش التيليفون يحمّل النسخة الجديدة. */
-const VERSION = 'qari-v1';
+const VERSION = 'qari-v2';
 const CORE = [
   './',
   'index.html',
+  'style.css',
+  'app.js',
   'manifest.json',
   'icons/icon-192.png',
   'icons/icon-512.png',
