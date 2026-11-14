@@ -1,6 +1,6 @@
 /* Service worker ديال قارئ الكتب.
    كل ما بدلتي شي ملف، بدل رقم VERSION باش التيليفون يحمّل النسخة الجديدة. */
-const VERSION = 'qari-v2';
+const VERSION = 'qari-v3';
 const CORE = [
   './',
   'index.html',
@@ -12,7 +12,7 @@ const CORE = [
   'icons/icon-maskable-512.png',
   'icons/apple-touch-icon.png',
   'lib/pdf.min.mjs',
-  'lib/pdf.worker.min.mjs'
+  'lib/pdf.worker.rtlfix.min.mjs'
 ];
 
 self.addEventListener('install', (e) => {

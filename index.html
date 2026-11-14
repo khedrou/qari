@@ -159,7 +159,7 @@
 
 <script type="module">
 import * as pdfjs from './lib/pdf.min.mjs';
-pdfjs.GlobalWorkerOptions.workerSrc = new URL('./lib/pdf.worker.min.mjs', import.meta.url).href;
+pdfjs.GlobalWorkerOptions.workerSrc = new URL('./lib/pdf.worker.rtlfix.min.mjs', import.meta.url).href;
 window.pdfjsLib = pdfjs;
 </script>
 <script src="app.js"></script>

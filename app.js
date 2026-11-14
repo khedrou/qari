@@ -1,7 +1,7 @@
 (function(){
 'use strict';
 var $=function(s){return document.querySelector(s)};
-var ALGO=1; // bump when text extraction changes, so cached books get rebuilt
+var ALGO=2; // bump when text extraction changes, so cached books get rebuilt
 
 /* ---------- small utils ---------- */
 var tt;
@@ -97,6 +97,7 @@ var TERM=/[.!?؟:…»”"')\]۔]$/;
 var DIG='0-9٠-٩۰-۹';
 var PAGENUM=new RegExp('^[\\s\\-–—.()\\[\\]]*['+DIG+']{1,4}[\\s\\-–—.()\\[\\]]*$');
 var NUMS=new RegExp('['+DIG+']+','g');
+var NUMEND=new RegExp('\\s['+DIG+']{1,4}$');   // a line that ends with a page number (table of contents)
 
 function normStr(s){
   s=String(s).normalize('NFKC');
@@ -223,7 +224,7 @@ function buildBlocks(pages){
       }
       if(cur){
         var brk=first?TERM.test(cur.t)
-          :((prev.y-r.y)>lineGap*1.45||((prev.x1-prev.x0)<wide*0.62&&TERM.test(prev.s)));
+          :((prev.y-r.y)>lineGap*1.45||((prev.x1-prev.x0)<wide*0.62&&TERM.test(prev.s))||(NUMEND.test(prev.s)&&(prev.x1-prev.x0)<wide*0.9));
         if(brk)flush();
       }
       if(!cur)cur={t:r.s,p:pi};else cur.t=joinLine(cur.t,r.s);
